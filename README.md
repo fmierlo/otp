@@ -1,10 +1,4 @@
-Requirements:
+# otp
 
-    * openssl
-    * base32 (from GNU coreutils)
+`otp` is a full rewrite of https://github.com/matthauck/bash-totp
 
-You are recommended to use it with "pass" from http://www.passwordstore.org/
-
-For example, to get the token for two-factor authentication:
-
-    totp GitHub "$(pass show otp/GitHub)"
