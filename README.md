@@ -14,8 +14,8 @@ into another script.
 
 ### Usage
 
-Secret is a `base32` encoded string found in the field `secret` of a `TOTP` url, usually
-16 bytes long.
+Secret is a `base32` encoded string found in the field `secret` of a [totp url](https://github.com/google/google-authenticator/wiki/Key-Uri-Format),
+usually 16 bytes long.
 
 Using environment variable:
 
