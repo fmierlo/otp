@@ -1,7 +1,7 @@
 # otp
 
 `otp` is a single function implementation of [TOTP](https://tools.ietf.org/html/rfc6238)
-in `bash` and a full rewrite of https://github.com/matthauck/bash-totp.
+in `bash` and a full rewrite of [matthauck/bash-totp](https://github.com/matthauck/bash-totp).
 
 Since this implementation is a single function, it can be useful to be copied and pasted
 into another script.
