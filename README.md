@@ -21,7 +21,7 @@ Using environment variable:
 
     OTP_SECRET_FILE=otp.secret ./otp
 
-Using stdin:
+Using stdin with `cat` or [pass](http://www.passwordstore.org/):
 
     cat otp.secret | ./otp
     # or
