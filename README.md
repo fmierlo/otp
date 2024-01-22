@@ -27,6 +27,6 @@ Using stdin with `cat` or [pass](http://www.passwordstore.org/):
     # or
     pass otp/secret | ./otp
 
-The interval can be set too:
+The interval and algorithm can be set too:
 
-    OTP_SECRET_FILE=otp.secret OTP_INTERVAL=30 ./otp
+    OTP_SECRET_FILE=otp.secret OTP_INTERVAL=30 OTP_ALGORITHM=SHA1 ./otp
