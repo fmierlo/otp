@@ -8,9 +8,9 @@ into another script.
 
 ### Dependencies
 
-- openssl
-- base32
-- date (bash < 5.0 only)
+- `openssl`
+- `base32`
+- `date` (`bash` < 5.0 only)
 
 ### Usage
 
