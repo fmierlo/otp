@@ -3,18 +3,22 @@
 # https://tools.ietf.org/html/rfc6238
 
 function otp() {
+
     # Source: https://github.com/fmierlo/otp/
+
     OTP_EPOCH="${EPOCHSECONDS:-$(date -u +"%s")}"
     OTP_DIGITS="${OTP_DIGITS:-6}"
     OTP_INTERVAL="${OTP_INTERVAL:-30}"
     OTP_ALGORITHM="${OTP_ALGORITHM:-SHA1}"
     OTP_SECRET_FILE="${OTP_SECRET_FILE:?Missing param}"
 
-    exec {secret}< "${OTP_SECRET_FILE}"
+    read -r secret < <(
+        sed "s,otpauth.*secret=\([A-Z2-7=]*\).*,\1,g" < "${OTP_SECRET_FILE}"
+    )
 
     {
         # PERIOD
-        period="$(echo "$(("${OTP_EPOCH}" / "${OTP_INTERVAL}"))")"
+        period="$((${OTP_EPOCH} / ${OTP_INTERVAL}))"
         # integer to hex
         printf -v hex "%016X" "${period}"
         # hex to binary
@@ -25,7 +29,7 @@ function otp() {
     } | {
         # DIGEST
         # The digest is a 160-bit hexadecimal number string from period.
-        openssl dgst -"${OTP_ALGORITHM}" -hmac "$(base32 -d <&${secret})" | {
+        openssl dgst -"${OTP_ALGORITHM}" -hmac "$(base32 -d <<<"${secret}")" | {
             read digest
             echo "${digest/* /}"
         }
@@ -42,7 +46,7 @@ function otp() {
 }
 
 # Return if the script was sourced
-return 0 2>/dev/null || true
+return 0 2> /dev/null || true
 
 OTP_SECRET_FILE="${OTP_SECRET_FILE:-/dev/stdin}"
 

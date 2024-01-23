@@ -21,7 +21,14 @@ usually 16 chars long. Example:
     echo "hi world." | base32
     NBUSA53POJWGILQK
 
+Or a full _TOTP Uri_, example:
+
+    otpauth://totp/example.com:username%40example.com?secret=NBUSA53POJWGILQK&issuer=example.com
+
 A secret must always be a file because `ps -e` can show environment variables.
+
+In case there are multiple valid secret lines in a file, only the first
+occurrence of a valid secret will be used.
 
 ### With Environment Variable
 
