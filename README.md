@@ -25,10 +25,8 @@ Or a full _TOTP Uri_, example:
 
     otpauth://totp/example.com:username%40example.com?secret=NBUSA53POJWGILQK&issuer=example.com
 
-A secret must always be a file because `ps -e` can show environment variables.
-
-In case there are multiple valid secret lines in a file, only the first
-occurrence of a valid secret will be used.
+A secret must always be a file because `ps -e` can show environment variables
+and only the first line of the file will be parsed.
 
 ### With Environment Variable
 
