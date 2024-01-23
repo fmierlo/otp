@@ -12,9 +12,9 @@ function otp() {
     OTP_ALGORITHM="${OTP_ALGORITHM:-SHA1}"
     OTP_SECRET_FILE="${OTP_SECRET_FILE:?Missing param}"
 
-    read -r secret < <(
-        sed "s,otpauth.*secret=\([A-Z2-7=]*\).*,\1,g" < "${OTP_SECRET_FILE}"
-    )
+    read -r secret < "${OTP_SECRET_FILE}"
+    read -r secret <<<"${secret/otpauth*secret=/}"
+    read -r secret <<<"${secret/&*/}"
 
     {
         # PERIOD
