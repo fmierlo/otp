@@ -48,9 +48,9 @@ Or the [pass](http://www.passwordstore.org/) command:
 
 ### Assigning Other Parameters
 
-The digits, interval and algorithm can be set too:
+The digits, period and algorithm can be set too:
 
-    OTP_DIGITS=6 OTP_INTERVAL=30 OTP_ALGORITHM=SHA1 OTP_SECRET_FILE=otp.secret ./otp
+    OTP_DIGITS=6 OTP_PERIOD=30 OTP_ALGORITHM=SHA1 OTP_SECRET_FILE=otp.secret ./otp
 
 ### Inporting Inside Another Script
 
