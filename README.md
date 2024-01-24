@@ -53,9 +53,9 @@ The digits, period and algorithm can be set too:
 ### base32 implementation
 
 The script auto-detect the available implementation, but it's possible to set
-manually.
+manually too.
 
-Standard linux or macOS with coreutils:
+Standard Linux or macOS with coreutils:
 
     OTP_BASE32=base32 OTP_SECRET_FILE=.secret ./otp
 
