@@ -18,12 +18,12 @@ Secret is a `base32` encoded string found in the field `secret` of a
 [TOTP Key Uri Format](https://github.com/google/google-authenticator/wiki/Key-Uri-Format),
 usually 16 chars long. Example:
 
-    echo "hi world." | base32
-    NBUSA53POJWGILQK
+    echo -n "hi world." | base32
+    NBUSA53POJWGILQ=
 
 Or a full _TOTP Uri_, example:
 
-    otpauth://totp/example.com:username%40example.com?secret=NBUSA53POJWGILQK&issuer=example.com
+    otpauth://totp/example.com:username%40example.com?secret=NBUSA53POJWGILQ=&issuer=example.com
 
 A secret must always be a file because `ps -e` can show environment variables.
 Only the first line of the file will be parsed.
