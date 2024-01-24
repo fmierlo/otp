@@ -4,6 +4,7 @@
 
 function otp() {
 
+    # License: BSD-3-Clause
     # Source: https://github.com/fmierlo/otp/
 
     OTP_EPOCH="${EPOCHSECONDS:-$(date -u +"%s")}"
