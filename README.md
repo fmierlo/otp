@@ -9,7 +9,7 @@ pasted into another script.
 ## Dependencies
 
 - `openssl`
-- `base32`
+- `base32` with `coreutils` or `python3`
 - `date` (`bash` < 5.0 only)
 
 ## Usage
@@ -28,13 +28,13 @@ Or a full _TOTP Uri_, example:
 A secret must always be a file because `ps -e` can show environment variables.
 Only the first line of the file will be parsed.
 
-### With Environment Variable
+### With environment variable
 
 Set the secret using a environment variable:
 
     OTP_SECRET_FILE=.secret ./otp
 
-### Using Stdin
+### Using stdin
 
 Set the secret using the `cat` command:
 
@@ -44,13 +44,26 @@ Or the [pass](http://www.passwordstore.org/) command:
 
     pass otp/secret | ./otp
 
-### Assigning Other Parameters
+### Assigning other parameters
 
 The digits, period and algorithm can be set too:
 
     OTP_DIGITS=6 OTP_PERIOD=30 OTP_ALGORITHM=SHA1 OTP_SECRET_FILE=otp.secret ./otp
 
-### Inporting Inside Another Script
+### base32 implementation
+
+The script auto-detect the available implementation, but it's possible to set
+manually.
+
+Standard linux or macOS with coreutils:
+
+    OTP_BASE32=base32 OTP_SECRET_FILE=.secret ./otp
+
+macOS without coreutils:
+
+    OTP_BASE32=base32_py OTP_SECRET_FILE=.secret ./otp
+
+### Inporting inside another script
 
     source ./otp
 
